@@ -12,20 +12,20 @@ html { scroll-behavior: smooth; }
 
 :root {
   --black:       #0A0A0A;
-  --off-black:   #111111;
-  --dark:        #181818;
-  --card:        #1C1C1C;
+  --off-black:   #080808;
+  --dark:        #0F0F0F;
+  --card:        #111111;
   --gold:        #B8972E;
   --gold-bright: #D4AF50;
   --gold-light:  #E8D08A;
   --gold-pale:   #F5EDD3;
-  --gold-dim:    rgba(184,151,46,0.15);
+  --gold-dim:    rgba(184,151,46,0.12);
   --white:       #FFFFFF;
   --grey1:       #CCCCCC;
-  --grey2:       #888888;
-  --grey3:       #444444;
-  --dim:         rgba(255,255,255,0.55);
-  --dimmer:      rgba(255,255,255,0.3);
+  --grey2:       #AAAAAA;
+  --grey3:       #888888;
+  --dim:         rgba(255,255,255,0.62);
+  --dimmer:      rgba(255,255,255,0.38);
   --font-display: 'Bodoni Moda', serif;
   --font-mark:    'Syncopate', sans-serif;
   --font-body:    'DM Sans', sans-serif;
@@ -345,9 +345,9 @@ nav {
 
 /* ── FREE RESOURCE STRIP ─────────────────────────────────── */
 .free-strip {
-  background: linear-gradient(135deg, rgba(184,151,46,0.12), rgba(184,151,46,0.05));
-  border-top: 1px solid rgba(184,151,46,0.2);
-  border-bottom: 1px solid rgba(184,151,46,0.2);
+  background: #000;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
   padding: 80px 32px;
 }
 
@@ -555,12 +555,18 @@ nav {
 
 /* featured product card */
 .product-feature {
-  background: linear-gradient(160deg, #1C1400, #100D00);
-  border: 1px solid rgba(184,151,46,0.4);
+  background: #0A0A0A;
+  border: 1px solid rgba(184,151,46,0.2);
   border-radius: 24px; overflow: hidden;
   display: grid; grid-template-columns: 1fr 1fr;
-  box-shadow: 0 32px 100px rgba(0,0,0,0.5), 0 0 80px rgba(184,151,46,0.06);
+  box-shadow: 0 40px 120px rgba(0,0,0,0.7);
   margin-bottom: 20px;
+  position: relative;
+}
+.product-feature::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(184,151,46,0.5), transparent);
 }
 
 @media (max-width: 768px) { .product-feature { grid-template-columns: 1fr; } }
@@ -708,7 +714,7 @@ nav {
 }
 
 .tier-featured {
-  background: linear-gradient(160deg, #1C1400, #0F0B00) padding-box,
+  background: #080808 padding-box,
               conic-gradient(from var(--border-angle, 0deg), #B8972E 0%, #E8D08A 30%, #D4AF50 50%, #B8972E 70%, #E8D08A 85%, #B8972E 100%) border-box;
   border: 1.5px solid transparent;
   box-shadow: 0 0 80px rgba(184,151,46,0.18), 0 32px 80px rgba(0,0,0,0.5);
@@ -937,8 +943,8 @@ nav {
 
 .avatar-bg {
   position: absolute; inset: 0;
-  background: linear-gradient(160deg, rgba(184,151,46,0.15), rgba(184,151,46,0.03));
-  border: 1px solid rgba(184,151,46,0.2);
+  background: #0A0A0A;
+  border: 1px solid rgba(255,255,255,0.07);
   border-radius: 24px;
 }
 
@@ -1267,6 +1273,149 @@ body::after {
 
 /* ── STATS COUNTER ──────────────────────────────────────── */
 .stat-num { display: block; }
+
+/* ── CREATOR / INFLUENCER SECTION ───────────────────────── */
+.creator-section {
+  padding: 110px 32px;
+  background: #000;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+.creator-inner {
+  max-width: 1080px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 72px; align-items: center;
+}
+@media (max-width: 768px) { .creator-inner { grid-template-columns: 1fr; gap: 48px; } }
+.creator-left h2 {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 4.5vw, 54px);
+  font-weight: 900; line-height: 1.1;
+  color: var(--white); margin: 20px 0 18px;
+}
+.creator-left h2 em { font-style: italic; color: var(--gold-light); }
+.creator-left > p {
+  font-size: 15px; color: rgba(255,255,255,0.6);
+  line-height: 1.9; margin-bottom: 36px;
+}
+.creator-list {
+  list-style: none; display: flex; flex-direction: column; gap: 22px;
+}
+.creator-list li { display: flex; gap: 16px; align-items: flex-start; }
+.cl-icon { font-size: 22px; flex-shrink: 0; margin-top: 1px; }
+.creator-list li strong {
+  display: block; font-size: 14px; font-weight: 700;
+  color: var(--white); margin-bottom: 5px;
+}
+.creator-list li span {
+  font-size: 13px; color: rgba(255,255,255,0.52); line-height: 1.65;
+}
+.creator-card {
+  background: #090909;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 22px; padding: 30px;
+  box-shadow: 0 32px 100px rgba(0,0,0,0.7);
+  position: relative; overflow: hidden;
+}
+.creator-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(184,151,46,0.5), rgba(232,208,138,0.7), rgba(184,151,46,0.5), transparent);
+}
+.cc-top {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 22px;
+}
+.cc-live {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 9px; font-weight: 700; letter-spacing: 2px;
+  color: rgba(255,255,255,0.45); font-family: var(--font-body);
+  text-transform: uppercase;
+}
+.cc-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #4ADE80; flex-shrink: 0;
+  box-shadow: 0 0 8px #4ADE80;
+  animation: pulse-ring 2s ease-out infinite;
+}
+.cc-stats {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px; margin-bottom: 18px;
+}
+.cc-stat {
+  background: #0F0F0F;
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 14px; padding: 16px;
+}
+.cc-stat-num {
+  font-family: var(--font-display);
+  font-size: 30px; font-weight: 900;
+  background: linear-gradient(135deg, #B8972E, #E8D08A);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  margin-bottom: 5px;
+}
+.cc-stat-label { font-size: 10px; color: rgba(255,255,255,0.4); line-height: 1.5; margin-bottom: 7px; }
+.cc-stat-change { font-size: 10px; font-weight: 700; letter-spacing: 0.5px; }
+.cc-stat-change.positive { color: #4ADE80; }
+.cc-divider { height: 1px; background: rgba(255,255,255,0.05); margin: 18px 0; }
+.cc-section-title {
+  font-size: 9px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 12px;
+  font-family: var(--font-body);
+}
+.cc-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 18px; }
+.cc-tag {
+  background: #111; border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 100px; padding: 5px 13px;
+  font-size: 11px; color: rgba(255,255,255,0.5);
+}
+.cc-tag.hot { border-color: rgba(251,146,60,0.25); color: #FB923C; background: rgba(251,146,60,0.05); }
+.cc-tag.rising { border-color: rgba(74,222,128,0.2); color: #4ADE80; background: rgba(74,222,128,0.05); }
+.cc-match {
+  background: #0F0F0F;
+  border: 1px solid rgba(184,151,46,0.12);
+  border-radius: 14px; padding: 16px;
+}
+.cc-match-label { font-size: 10px; color: rgba(255,255,255,0.38); line-height: 1.55; margin-bottom: 13px; }
+.cc-checkmarks { display: flex; flex-direction: column; gap: 9px; }
+.cc-check-row {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 12px; color: rgba(255,255,255,0.35);
+}
+.cc-check-row.done { color: rgba(255,255,255,0.75); }
+.cc-check-row.done span { color: #4ADE80; font-weight: 700; font-size: 13px; }
+.cc-check-row span { color: rgba(255,255,255,0.18); }
+
+/* ── GLOBAL STARFIELD ───────────────────────────────────── */
+#starfield {
+  position: fixed; inset: 0;
+  width: 100%; height: 100%;
+  pointer-events: none; z-index: 0;
+}
+
+/* ── SECTION ATMOSPHERE ─────────────────────────────────── */
+.product-section,
+.membership-section,
+.proof-section,
+.about-section,
+.final-cta {
+  position: relative;
+}
+.product-section::before,
+.membership-section::before,
+.proof-section::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+}
+
+/* ── TYPOGRAPHY REFINEMENTS ─────────────────────────────── */
+.section-header p { font-size: 16px; color: rgba(255,255,255,0.6); }
+.product-feature-right { background: rgba(0,0,0,0.3); border-left: 1px solid rgba(255,255,255,0.05); }
+.wyg-item p { color: rgba(255,255,255,0.55); }
+.tier-base .tier-name-label { color: var(--grey3); }
+.tier-period { color: rgba(255,255,255,0.5); }
+.playbook-pages { color: rgba(255,255,255,0.5) !important; }
+.stat-label { font-size: 11px; color: rgba(255,255,255,0.55); letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
 </style>
 </head>
 <body>
@@ -1278,6 +1427,9 @@ body::after {
   <div class="portal-ring r3"></div>
   <div class="portal-wordmark">AFLUENCE</div>
 </div>
+
+<!-- GLOBAL STARFIELD -->
+<canvas id="starfield"></canvas>
 
 <!-- CURSOR GLOW -->
 <div id="cursor-glow"></div>
@@ -1323,6 +1475,7 @@ body::after {
 
   <ul class="nav-links">
     <li><a href="#free">Free Playbook</a></li>
+    <li><a href="#creators">For Creators</a></li>
     <li><a href="#product">Brand Audit Kit</a></li>
     <li><a href="#membership">Membership</a></li>
     <li><a href="#about">About</a></li>
@@ -1472,6 +1625,96 @@ body::after {
         <div class="playbook-bottom">
           <div class="playbook-pages">10 pages · PDF · Instant access</div>
           <div class="playbook-cta-mini">Get it free →</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CREATORS & INFLUENCERS -->
+<section class="creator-section" id="creators">
+  <div class="creator-inner">
+
+    <div class="creator-left reveal">
+      <span class="pill-label">✦ For Creators &amp; Influencers</span>
+      <h2>Your audience is<br>someone's <em>customer.</em></h2>
+      <p>South African creators are sitting on untapped brand value. Afluence gives you the intelligence to know exactly what brands want, what your audience responds to, and how to position yourself for paid partnerships — before the opportunity finds you.</p>
+      <ul class="creator-list">
+        <li>
+          <span class="cl-icon">📊</span>
+          <div>
+            <strong>Know what brands look for</strong>
+            <span>Engagement rates, niche authority, content consistency — understand the exact metrics that open partnership doors in SA.</span>
+          </div>
+        </li>
+        <li>
+          <span class="cl-icon">🎯</span>
+          <div>
+            <strong>Dominate your SA niche</strong>
+            <span>Platform-specific growth strategy for the SA creator economy — not recycled US advice that doesn't translate.</span>
+          </div>
+        </li>
+        <li>
+          <span class="cl-icon">💼</span>
+          <div>
+            <strong>Monetisation intelligence</strong>
+            <span>A clear roadmap from follower count to income — affiliate, sponsored content, and digital products that convert.</span>
+          </div>
+        </li>
+        <li>
+          <span class="cl-icon">⚡</span>
+          <div>
+            <strong>Algorithm advantage</strong>
+            <span>Monthly briefings on what's performing in the SA market right now, before it becomes mainstream.</span>
+          </div>
+        </li>
+      </ul>
+      <form onsubmit="handleSubscribe(event, 'creator')" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:36px;">
+        <input type="email" class="capture-input" placeholder="Your email address" required style="min-width:220px;max-width:280px;"/>
+        <button type="submit" class="btn-primary">Join as a Creator →</button>
+      </form>
+    </div>
+
+    <div class="creator-right reveal">
+      <div class="creator-card">
+        <div class="cc-top">
+          <span class="pill-label" style="font-size:9px;padding:4px 14px;">Creator Intelligence</span>
+          <div class="cc-live"><div class="cc-dot"></div>LIVE SA DATA</div>
+        </div>
+
+        <div class="cc-stats">
+          <div class="cc-stat">
+            <div class="cc-stat-num">3.8%</div>
+            <div class="cc-stat-label">Avg SA engagement rate — Reels &amp; short video</div>
+            <div class="cc-stat-change positive">↑ Up from 2.1% in 2024</div>
+          </div>
+          <div class="cc-stat">
+            <div class="cc-stat-num">67%</div>
+            <div class="cc-stat-label">SA brands increasing creator spend in 2026</div>
+            <div class="cc-stat-change positive">↑ Fastest growing channel</div>
+          </div>
+        </div>
+
+        <div class="cc-divider"></div>
+        <div class="cc-section-title">Trending formats in SA right now</div>
+        <div class="cc-tags">
+          <span class="cc-tag hot">🔥 Behind-the-scenes</span>
+          <span class="cc-tag hot">🔥 Local storytelling</span>
+          <span class="cc-tag rising">↑ Long-form video</span>
+          <span class="cc-tag rising">↑ Educational carousels</span>
+          <span class="cc-tag">Micro-influencer collabs</span>
+        </div>
+
+        <div class="cc-match">
+          <div class="cc-match-label">Brand partnership checklist — how many can you tick?</div>
+          <div class="cc-checkmarks">
+            <div class="cc-check-row done"><span>✓</span> 1 000+ engaged followers</div>
+            <div class="cc-check-row done"><span>✓</span> Consistent posting schedule</div>
+            <div class="cc-check-row done"><span>✓</span> Clearly defined niche content</div>
+            <div class="cc-check-row"><span>○</span> Platform-specific growth strategy</div>
+            <div class="cc-check-row"><span>○</span> Brand media kit ready to send</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1806,6 +2049,41 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ── GLOBAL STARFIELD ───────────────────────────────────── */
+(function() {
+  const sf = document.getElementById('starfield');
+  const sc = sf.getContext('2d');
+  let stars = [];
+
+  function resizeSf() { sf.width = window.innerWidth; sf.height = window.innerHeight; }
+  resizeSf();
+  window.addEventListener('resize', resizeSf);
+
+  for (let i = 0; i < 160; i++) {
+    stars.push({
+      x: Math.random(), y: Math.random(),
+      r: Math.random() * 0.9 + 0.2,
+      a: Math.random() * 0.25 + 0.05,
+      speed: Math.random() * 0.0008 + 0.0002,
+      phase: Math.random() * Math.PI * 2,
+    });
+  }
+
+  let t = 0;
+  (function tickSf() {
+    sc.clearRect(0, 0, sf.width, sf.height);
+    t += 0.008;
+    stars.forEach(s => {
+      const alpha = s.a * (0.5 + 0.5 * Math.sin(t * s.speed * 300 + s.phase));
+      sc.beginPath();
+      sc.arc(s.x * sf.width, s.y * sf.height, s.r, 0, Math.PI * 2);
+      sc.fillStyle = `rgba(255,245,220,${alpha})`;
+      sc.fill();
+    });
+    requestAnimationFrame(tickSf);
+  })();
+})();
 
 /* ── PARTICLE SYSTEM ────────────────────────────────────── */
 const canvas = document.getElementById('hero-canvas');
