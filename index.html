@@ -930,29 +930,75 @@ nav {
 
 .cred-text strong { color: var(--gold-light); font-weight: 600; }
 
-/* avatar placeholder */
+/* founder photo */
 .about-left {
   display: flex; justify-content: center; align-items: center;
 }
 
 .avatar-wrap {
   position: relative;
-  width: 320px; height: 380px;
+  width: 340px; height: 420px;
   display: flex; align-items: flex-end; justify-content: center;
+  border-radius: 24px; overflow: hidden;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.7), 0 0 0 1px rgba(184,151,46,0.15);
 }
 
-.avatar-bg {
+.avatar-photo {
   position: absolute; inset: 0;
-  background: #0A0A0A;
-  border: 1px solid rgba(255,255,255,0.07);
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
   border-radius: 24px;
+  filter: brightness(0.92) contrast(1.04);
 }
+
+.avatar-bg { display: none; }
 
 .avatar-ring {
-  position: absolute; inset: -16px;
-  border-radius: 32px;
-  border: 1px solid rgba(184,151,46,0.1);
+  position: absolute; inset: -12px;
+  border-radius: 30px;
+  border: 1px solid rgba(184,151,46,0.18);
+  pointer-events: none;
 }
+
+/* gradient fade at the bottom for the quote overlay */
+.avatar-wrap::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 55%;
+  background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);
+  border-radius: 0 0 24px 24px;
+  pointer-events: none;
+}
+
+.avatar-name {
+  position: absolute; top: 20px; left: 20px;
+  font-family: var(--font-mark);
+  font-size: 9px; font-weight: 700; letter-spacing: 3px;
+  color: rgba(255,255,255,0.7); z-index: 2;
+  background: rgba(0,0,0,0.35);
+  padding: 5px 10px; border-radius: 100px;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.avatar-quote {
+  position: relative; z-index: 2;
+  padding: 20px 22px;
+  width: 100%;
+}
+
+.avatar-quote p {
+  font-family: var(--font-display);
+  font-size: 13px; font-style: italic;
+  color: rgba(255,255,255,0.9); line-height: 1.55;
+  margin-bottom: 10px;
+}
+
+.avatar-sig {
+  font-size: 11px; font-weight: 600;
+  color: var(--gold-bright); letter-spacing: 0.5px;
+}
+
+.avatar-sig span { color: rgba(255,255,255,0.5); font-weight: 400; }
 
 .avatar-quote {
   position: relative; z-index: 2;
@@ -1964,7 +2010,7 @@ body::after {
 
     <div class="about-left reveal">
       <div class="avatar-wrap">
-        <div class="avatar-bg"></div>
+        <img src="sonica.jpg" alt="Sonica — Founder of Afluence" class="avatar-photo"/>
         <div class="avatar-ring"></div>
         <span class="avatar-name">SONICA · FOUNDER</span>
         <div class="avatar-quote">
