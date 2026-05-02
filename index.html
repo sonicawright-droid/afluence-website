@@ -182,9 +182,9 @@ nav {
 }
 
 .ticker-item {
-  font-family: var(--font-mark);
-  font-size: 9px; font-weight: 700;
-  letter-spacing: 3px; text-transform: uppercase;
+  font-family: var(--font-body);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase;
   color: var(--black);
   padding: 0 32px;
   display: flex; align-items: center; gap: 12px;
@@ -282,7 +282,7 @@ nav {
   transition: border-color 0.2s, background 0.2s;
 }
 
-.capture-input::placeholder { color: var(--grey3); }
+.capture-input::placeholder { color: rgba(255,255,255,0.45); }
 
 .capture-input:focus {
   border-color: var(--gold);
@@ -708,10 +708,16 @@ nav {
 }
 
 .tier-featured {
-  background: linear-gradient(160deg, #1C1400, #0F0B00);
-  border: 1px solid rgba(184,151,46,0.45);
-  box-shadow: 0 0 60px rgba(184,151,46,0.1);
+  background: linear-gradient(160deg, #1C1400, #0F0B00) padding-box,
+              conic-gradient(from var(--border-angle, 0deg), #B8972E 0%, #E8D08A 30%, #D4AF50 50%, #B8972E 70%, #E8D08A 85%, #B8972E 100%) border-box;
+  border: 1.5px solid transparent;
+  box-shadow: 0 0 80px rgba(184,151,46,0.18), 0 32px 80px rgba(0,0,0,0.5);
+  animation: spin-border 5s linear infinite;
 }
+@property --border-angle {
+  syntax: '<angle>'; initial-value: 0deg; inherits: false;
+}
+@keyframes spin-border { to { --border-angle: 360deg; } }
 
 .tier-premium {
   background: linear-gradient(160deg, #141414, #1A1A1A);
@@ -1191,6 +1197,76 @@ body::after {
   will-change: transform;
   transition: transform 0.15s ease, border-color 0.3s, background 0.3s;
 }
+
+/* ── SECTION HEADER GOLD LINE ───────────────────────────── */
+.section-header h2 {
+  padding-bottom: 32px;
+  position: relative;
+}
+.section-header h2::after {
+  content: '';
+  position: absolute; bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(184,151,46,0.7), transparent);
+  transition: width 1.6s cubic-bezier(0.22,1,0.36,1) 0.4s;
+}
+.section-header.visible h2::after { width: 260px; }
+
+/* ── HERO BREATHING GLOW ────────────────────────────────── */
+.hero-glow {
+  position: absolute;
+  width: 700px; height: 700px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(184,151,46,0.1) 0%, transparent 65%);
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  pointer-events: none; z-index: 0;
+  animation: hero-breathe 7s ease-in-out infinite;
+}
+@keyframes hero-breathe {
+  0%,100% { transform: translate(-50%,-50%) scale(1);   opacity: 0.5; }
+  50%      { transform: translate(-50%,-50%) scale(1.5); opacity: 1; }
+}
+
+/* ── BUTTON RIPPLE ──────────────────────────────────────── */
+.btn-primary, .capture-btn {
+  position: relative; overflow: hidden;
+}
+.ripple {
+  position: absolute; border-radius: 50%;
+  width: 6px; height: 6px;
+  background: rgba(255,255,255,0.35);
+  transform: scale(0); animation: ripple-out 0.7s ease-out forwards;
+  pointer-events: none;
+}
+@keyframes ripple-out {
+  to { transform: scale(60); opacity: 0; }
+}
+
+/* ── CARD LIGHT SWEEP ───────────────────────────────────── */
+.tier-card, .proof-card {
+  overflow: hidden;
+}
+.tier-card::after, .proof-card::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(115deg, transparent 40%, rgba(184,151,46,0.07) 50%, transparent 60%);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+}
+.tier-card:hover::after, .proof-card:hover::after {
+  transform: translateX(100%);
+}
+
+/* ── ENHANCED PROOF CARD HOVER ──────────────────────────── */
+.proof-card:hover {
+  border-color: rgba(184,151,46,0.4);
+  box-shadow: 0 0 40px rgba(184,151,46,0.08);
+}
+
+/* ── STATS COUNTER ──────────────────────────────────────── */
+.stat-num { display: block; }
 </style>
 </head>
 <body>
@@ -1273,6 +1349,7 @@ body::after {
 <!-- HERO -->
 <section class="hero" id="subscribe">
   <canvas id="hero-canvas"></canvas>
+  <div class="hero-glow"></div>
   <div class="hero-inner">
 
     <div class="hero-logo-float">
@@ -1800,6 +1877,62 @@ document.querySelectorAll('.tier-card, .proof-card, .playbook-card').forEach(car
     card.style.transition = 'transform 0.6s ease';
   });
 });
+
+/* ── MAGNETIC BUTTONS ───────────────────────────────────── */
+document.querySelectorAll('.btn-primary, .capture-btn, .nav-cta').forEach(btn => {
+  btn.addEventListener('mousemove', (e) => {
+    const r = btn.getBoundingClientRect();
+    const x = (e.clientX - r.left - r.width  / 2) * 0.22;
+    const y = (e.clientY - r.top  - r.height / 2) * 0.28;
+    btn.style.transform = `translate(${x}px,${y}px)`;
+    btn.style.transition = 'transform 0.12s ease';
+  });
+  btn.addEventListener('mouseleave', () => {
+    btn.style.transform = '';
+    btn.style.transition = 'transform 0.5s cubic-bezier(0.23,1,0.32,1)';
+  });
+});
+
+/* ── BUTTON RIPPLE ──────────────────────────────────────── */
+document.querySelectorAll('.btn-primary, .capture-btn').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    const r = btn.getBoundingClientRect();
+    const dot = document.createElement('span');
+    dot.className = 'ripple';
+    dot.style.left = (e.clientX - r.left - 3) + 'px';
+    dot.style.top  = (e.clientY - r.top  - 3) + 'px';
+    btn.appendChild(dot);
+    setTimeout(() => dot.remove(), 700);
+  });
+});
+
+/* ── ANIMATED STAT COUNTERS ─────────────────────────────── */
+function countUp(el, target, prefix, suffix) {
+  const dur = 2200;
+  const start = performance.now();
+  (function step(now) {
+    const p = Math.min((now - start) / dur, 1);
+    const eased = 1 - Math.pow(1 - p, 3);
+    el.textContent = prefix + Math.round(eased * target) + suffix;
+    if (p < 1) requestAnimationFrame(step);
+  })(start);
+}
+
+const statsObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.querySelectorAll('.stat-num').forEach(el => {
+      const raw    = el.textContent;
+      const prefix = raw.match(/^[^\d]*/)[0];
+      const num    = parseInt(raw.replace(/[^\d]/g, ''), 10);
+      const suffix = raw.match(/[^\d]*$/)[0];
+      countUp(el, num, prefix, suffix);
+    });
+    statsObs.unobserve(entry.target);
+  });
+}, { threshold: 0.6 });
+const statsRow = document.querySelector('.stats-row');
+if (statsRow) statsObs.observe(statsRow);
 
 /* ── EMAIL SUBSCRIBE ────────────────────────────────────── */
 function handleSubscribe(e, source) {
