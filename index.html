@@ -111,7 +111,7 @@ body {
 /* ── NAV ────────────────────────────────────────────────── */
 nav {
   position: fixed; top: 0; left: 0; right: 0;
-  z-index: 100;
+  z-index: 9999;
   padding: 0 32px;
   height: 64px;
   display: flex; align-items: center; justify-content: space-between;
@@ -170,7 +170,7 @@ nav {
 /* ── TICKER ─────────────────────────────────────────────── */
 .ticker-wrap {
   position: fixed; top: 64px; left: 0; right: 0;
-  z-index: 99;
+  z-index: 9998;
   height: 36px; overflow: hidden;
   background: var(--gold);
   display: flex; align-items: center;
@@ -1179,7 +1179,7 @@ footer {
 /* ── GRAIN OVERLAY ──────────────────────────────────────── */
 body::after {
   content: '';
-  position: fixed; inset: 0; pointer-events: none; z-index: 9997;
+  position: fixed; inset: 0; pointer-events: none; z-index: 50;
   opacity: 0.028;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 160px 160px;
@@ -1301,17 +1301,22 @@ body::after {
           <stop offset="100%" stop-color="#B8972E"/>
         </linearGradient>
       </defs>
-      <rect x="10" y="52" width="7" height="14" rx="1.5" fill="url(#ng)" opacity="0.5"/>
-      <rect x="20" y="42" width="7" height="24" rx="1.5" fill="url(#ng)" opacity="0.65"/>
-      <rect x="30" y="30" width="7" height="36" rx="1.5" fill="url(#ng)" opacity="0.85"/>
-      <rect x="12" y="46" width="56" height="2.5" rx="1.25" fill="url(#ng)" opacity="0.3"/>
-      <rect x="43" y="30" width="7" height="36" rx="1.5" fill="url(#ng)" opacity="0.85"/>
-      <rect x="53" y="42" width="7" height="24" rx="1.5" fill="url(#ng)" opacity="0.65"/>
-      <rect x="63" y="52" width="7" height="14" rx="1.5" fill="url(#ng)" opacity="0.5"/>
-      <circle cx="40" cy="16" r="4" fill="url(#ng)"/>
-      <circle cx="40" cy="16" r="2" fill="#F5EDD3"/>
-      <line x1="40" y1="20" x2="30" y2="30" stroke="url(#ng)" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
-      <line x1="40" y1="20" x2="50" y2="30" stroke="url(#ng)" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+      <circle cx="40" cy="40" r="36" stroke="url(#ng)" stroke-width="0.75" opacity="0.3" fill="none"/>
+      <circle cx="40" cy="40" r="29" stroke="url(#ng)" stroke-width="0.5" opacity="0.15" fill="none" stroke-dasharray="2 5"/>
+      <rect x="18" y="52" width="6" height="14" rx="3" fill="url(#ng)" opacity="0.4"/>
+      <rect x="27" y="43" width="6" height="23" rx="3" fill="url(#ng)" opacity="0.65"/>
+      <rect x="36" y="33" width="8" height="33" rx="4" fill="url(#ng)"/>
+      <rect x="47" y="43" width="6" height="23" rx="3" fill="url(#ng)" opacity="0.65"/>
+      <rect x="56" y="52" width="6" height="14" rx="3" fill="url(#ng)" opacity="0.4"/>
+      <rect x="14" y="65" width="52" height="1.5" rx="0.75" fill="url(#ng)" opacity="0.2"/>
+      <polygon points="40,11 48,21 40,31 32,21" fill="url(#ng)"/>
+      <polygon points="40,14 46,21 40,28 34,21" fill="#0A0500"/>
+      <polygon points="40,16.5 44,21 40,25.5 36,21" fill="url(#ng)" opacity="0.55"/>
+      <circle cx="40" cy="21" r="2" fill="#FFF5D6"/>
+      <line x1="26" y1="21" x2="32" y2="21" stroke="url(#ng)" stroke-width="0.75" opacity="0.5" stroke-linecap="round"/>
+      <line x1="48" y1="21" x2="54" y2="21" stroke="url(#ng)" stroke-width="0.75" opacity="0.5" stroke-linecap="round"/>
+      <circle cx="5" cy="40" r="1.8" fill="url(#ng)" opacity="0.3"/>
+      <circle cx="75" cy="40" r="1.8" fill="url(#ng)" opacity="0.3"/>
     </svg>
     <span class="nav-wordmark gold-text">AFLUENCE</span>
   </a>
@@ -1364,17 +1369,22 @@ body::after {
               <stop offset="100%" stop-color="#B8972E"/>
             </linearGradient>
           </defs>
-          <rect x="10" y="52" width="7" height="14" rx="1.5" fill="url(#hg)" opacity="0.5"/>
-          <rect x="20" y="42" width="7" height="24" rx="1.5" fill="url(#hg)" opacity="0.65"/>
-          <rect x="30" y="30" width="7" height="36" rx="1.5" fill="url(#hg)" opacity="0.85"/>
-          <rect x="12" y="46" width="56" height="2.5" rx="1.25" fill="url(#hg)" opacity="0.3"/>
-          <rect x="43" y="30" width="7" height="36" rx="1.5" fill="url(#hg)" opacity="0.85"/>
-          <rect x="53" y="42" width="7" height="24" rx="1.5" fill="url(#hg)" opacity="0.65"/>
-          <rect x="63" y="52" width="7" height="14" rx="1.5" fill="url(#hg)" opacity="0.5"/>
-          <circle cx="40" cy="16" r="4" fill="url(#hg)"/>
-          <circle cx="40" cy="16" r="2" fill="#F5EDD3"/>
-          <line x1="40" y1="20" x2="30" y2="30" stroke="url(#hg)" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
-          <line x1="40" y1="20" x2="50" y2="30" stroke="url(#hg)" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+          <circle cx="40" cy="40" r="36" stroke="url(#hg)" stroke-width="0.75" opacity="0.3" fill="none"/>
+          <circle cx="40" cy="40" r="29" stroke="url(#hg)" stroke-width="0.5" opacity="0.15" fill="none" stroke-dasharray="2 5"/>
+          <rect x="18" y="52" width="6" height="14" rx="3" fill="url(#hg)" opacity="0.4"/>
+          <rect x="27" y="43" width="6" height="23" rx="3" fill="url(#hg)" opacity="0.65"/>
+          <rect x="36" y="33" width="8" height="33" rx="4" fill="url(#hg)"/>
+          <rect x="47" y="43" width="6" height="23" rx="3" fill="url(#hg)" opacity="0.65"/>
+          <rect x="56" y="52" width="6" height="14" rx="3" fill="url(#hg)" opacity="0.4"/>
+          <rect x="14" y="65" width="52" height="1.5" rx="0.75" fill="url(#hg)" opacity="0.2"/>
+          <polygon points="40,11 48,21 40,31 32,21" fill="url(#hg)"/>
+          <polygon points="40,14 46,21 40,28 34,21" fill="#0A0500"/>
+          <polygon points="40,16.5 44,21 40,25.5 36,21" fill="url(#hg)" opacity="0.55"/>
+          <circle cx="40" cy="21" r="2" fill="#FFF5D6"/>
+          <line x1="26" y1="21" x2="32" y2="21" stroke="url(#hg)" stroke-width="0.75" opacity="0.5" stroke-linecap="round"/>
+          <line x1="48" y1="21" x2="54" y2="21" stroke="url(#hg)" stroke-width="0.75" opacity="0.5" stroke-linecap="round"/>
+          <circle cx="5" cy="40" r="1.8" fill="url(#hg)" opacity="0.3"/>
+          <circle cx="75" cy="40" r="1.8" fill="url(#hg)" opacity="0.3"/>
         </svg>
       </div>
     </div>
@@ -1756,17 +1766,22 @@ body::after {
     <div class="footer-logo">
       <svg width="24" height="24" viewBox="0 0 80 80" fill="none">
         <defs><linearGradient id="fg" x1="0" y1="0" x2="80" y2="80" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#B8972E"/><stop offset="50%" stop-color="#E8D08A"/><stop offset="100%" stop-color="#B8972E"/></linearGradient></defs>
-        <rect x="10" y="52" width="7" height="14" rx="1.5" fill="url(#fg)" opacity="0.5"/>
-        <rect x="20" y="42" width="7" height="24" rx="1.5" fill="url(#fg)" opacity="0.65"/>
-        <rect x="30" y="30" width="7" height="36" rx="1.5" fill="url(#fg)" opacity="0.85"/>
-        <rect x="12" y="46" width="56" height="2.5" rx="1.25" fill="url(#fg)" opacity="0.3"/>
-        <rect x="43" y="30" width="7" height="36" rx="1.5" fill="url(#fg)" opacity="0.85"/>
-        <rect x="53" y="42" width="7" height="24" rx="1.5" fill="url(#fg)" opacity="0.65"/>
-        <rect x="63" y="52" width="7" height="14" rx="1.5" fill="url(#fg)" opacity="0.5"/>
-        <circle cx="40" cy="16" r="4" fill="url(#fg)"/>
-        <circle cx="40" cy="16" r="2" fill="#F5EDD3"/>
-        <line x1="40" y1="20" x2="30" y2="30" stroke="url(#fg)" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
-        <line x1="40" y1="20" x2="50" y2="30" stroke="url(#fg)" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+        <circle cx="40" cy="40" r="36" stroke="url(#fg)" stroke-width="0.75" opacity="0.3" fill="none"/>
+        <circle cx="40" cy="40" r="29" stroke="url(#fg)" stroke-width="0.5" opacity="0.15" fill="none" stroke-dasharray="2 5"/>
+        <rect x="18" y="52" width="6" height="14" rx="3" fill="url(#fg)" opacity="0.4"/>
+        <rect x="27" y="43" width="6" height="23" rx="3" fill="url(#fg)" opacity="0.65"/>
+        <rect x="36" y="33" width="8" height="33" rx="4" fill="url(#fg)"/>
+        <rect x="47" y="43" width="6" height="23" rx="3" fill="url(#fg)" opacity="0.65"/>
+        <rect x="56" y="52" width="6" height="14" rx="3" fill="url(#fg)" opacity="0.4"/>
+        <rect x="14" y="65" width="52" height="1.5" rx="0.75" fill="url(#fg)" opacity="0.2"/>
+        <polygon points="40,11 48,21 40,31 32,21" fill="url(#fg)"/>
+        <polygon points="40,14 46,21 40,28 34,21" fill="#0A0500"/>
+        <polygon points="40,16.5 44,21 40,25.5 36,21" fill="url(#fg)" opacity="0.55"/>
+        <circle cx="40" cy="21" r="2" fill="#FFF5D6"/>
+        <line x1="26" y1="21" x2="32" y2="21" stroke="url(#fg)" stroke-width="0.75" opacity="0.5" stroke-linecap="round"/>
+        <line x1="48" y1="21" x2="54" y2="21" stroke="url(#fg)" stroke-width="0.75" opacity="0.5" stroke-linecap="round"/>
+        <circle cx="5" cy="40" r="1.8" fill="url(#fg)" opacity="0.3"/>
+        <circle cx="75" cy="40" r="1.8" fill="url(#fg)" opacity="0.3"/>
       </svg>
       <span class="footer-wordmark gold-text">AFLUENCE</span>
     </div>
